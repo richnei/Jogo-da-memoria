@@ -11,5 +11,5 @@ export default function MemoryGame() {
     <div>
       <GameOver show={gameOver} handleRestart={restart}></GameOver>
     </div>
-  );
+  ); 
 }
