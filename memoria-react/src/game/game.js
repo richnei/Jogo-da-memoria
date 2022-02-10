@@ -115,6 +115,26 @@ let game = {
       ];
     }
   },
+
+  flipCard: function (cardId, gameOverCallBack, noMatchCallback) {
+    if (this.setCard(cardId)) {
+      if (this.secondCard) {
+        if (this.checkMatch()) {
+          this.clearCards();
+          if (this.checkGameOver()) {
+            //GameOver
+            gameOverCallBack();
+          }
+        } else {
+          setTimeout(() => {
+            // No Match
+            this.unflipCards();
+            noMatchCallback();
+          }, 1000);
+        }
+      }
+    }
+  },
 };
 
 export default game;
