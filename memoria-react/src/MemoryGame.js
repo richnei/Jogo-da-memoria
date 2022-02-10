@@ -1,17 +1,22 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import GameBoard from "./components/GameBoard";
 import GameOver from "./components/GameOver";
-
+import game from "./game/game";
 export default function MemoryGame() {
   const [gameOver, setGameOver] = useState(false);
+  const [cards, setCards] = useState([]);
+
+  useEffect(() => {
+    game.createCardsFromEmojis();
+  }, []);
 
   function restart() {
     setGameOver(false);
   }
   return (
     <div>
-        <GameBoard></GameBoard>
-        <GameOver show={gameOver} handleRestart={restart}></GameOver>
+      <GameBoard cards={cards}></GameBoard>
+      <GameOver show={gameOver} handleRestart={restart}></GameOver>
     </div>
-  ); 
+  );
 }
