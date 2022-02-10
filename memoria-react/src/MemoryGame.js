@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import GameBoard from "./components/GameBoard";
 import GameOver from "./components/GameOver";
 
 export default function MemoryGame() {
@@ -9,7 +10,8 @@ export default function MemoryGame() {
   }
   return (
     <div>
-      <GameOver show={gameOver} handleRestart={restart}></GameOver>
+        <GameBoard></GameBoard>
+        <GameOver show={gameOver} handleRestart={restart}></GameOver>
     </div>
   ); 
 }
